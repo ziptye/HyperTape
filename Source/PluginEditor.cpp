@@ -13,10 +13,8 @@
 HyperTapeAudioProcessorEditor::HyperTapeAudioProcessorEditor (HyperTapeAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize (751, 450);
-    background = juce::ImageCache::getFromMemory(BinaryData::HYPERTAPE1_png, BinaryData::HYPERTAPE1_pngSize);
+    setSize (753, 450);
+    background = juce::ImageCache::getFromMemory(BinaryData::HYPERTAPE6_png, BinaryData::HYPERTAPE6_pngSize);
 }
 
 HyperTapeAudioProcessorEditor::~HyperTapeAudioProcessorEditor()
