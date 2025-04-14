@@ -1,7 +1,8 @@
 /*
   ==============================================================================
 
-    This file contains the basic framework code for a JUCE plugin editor.
+  PLUGIN: HYPERTAPE
+  AUTHOR: Zachary Pennington (ZIPTYEAUDIO)
 
   ==============================================================================
 */
@@ -13,10 +14,8 @@
 HyperTapeAudioProcessorEditor::HyperTapeAudioProcessorEditor (HyperTapeAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize (751, 450);
-    background = juce::ImageCache::getFromMemory(BinaryData::HYPERTAPE1_png, BinaryData::HYPERTAPE1_pngSize);
+    setSize (753, 450);
+    background = juce::ImageCache::getFromMemory(BinaryData::HYPERTAPE7_png, BinaryData::HYPERTAPE7_pngSize);
 }
 
 HyperTapeAudioProcessorEditor::~HyperTapeAudioProcessorEditor()
