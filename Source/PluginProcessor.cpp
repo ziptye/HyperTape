@@ -1,7 +1,8 @@
 /*
   ==============================================================================
 
-    This file contains the basic framework code for a JUCE plugin processor.
+  PLUGIN: HYPERTAPE
+  AUTHOR: Zachary Pennington (ZIPTYEAUDIO)
 
   ==============================================================================
 */
@@ -19,7 +20,7 @@ HyperTapeAudioProcessor::HyperTapeAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), apvts(*this, nullptr, "HyperTape Params", createParameterLayout())
 #endif
 {
 }
@@ -188,4 +189,32 @@ void HyperTapeAudioProcessor::setStateInformation (const void* data, int sizeInB
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new HyperTapeAudioProcessor();
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout HyperTapeAudioProcessor::createParameterLayout()
+{
+    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+    
+    auto LPFRange = juce::NormalisableRange<float>(20.0f, 20000.0f, 1.0f, 0.25f);
+    auto HPFRange = juce::NormalisableRange<float>(20.0f, 20000.0f, 1.0f, 0.25f);
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("Low-Pass" , 1), "Low-Pass", LPFRange, 20000.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("High-Pass" , 1), "High-Pass", HPFRange, 20.0f));
+    
+    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color A", 1), "Color A", true)); // Default
+    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color B", 1), "Color B", false));
+    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color C", 1), "Color C", false));
+    
+    auto Amount = juce::NormalisableRange<float>(0.0f, 100.0f, 1.0f, 0.25f);
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("Amount" , 1), "Amount", Amount, 0.0f));
+    
+    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Speed 7.5", 1), "Speed 7.5", true)); // Default
+    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Speed 15", 1), "Speed 15", false));
+    
+    auto DriveAmount = juce::NormalisableRange<float>(0.0f, 100.0f, 1.0f, 0.25f);
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("Drive" , 1), "Drive", DriveAmount, 0.0f));
+    
+    auto BiasAmount = juce::NormalisableRange<float>(-1.0f, 1.0f, 0.01f);
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("Bias" , 1), "Bias", BiasAmount, -1.0f));
+    
+    return {    params.begin(), params.end()    };
 }
