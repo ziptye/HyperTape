@@ -1,6 +1,6 @@
 # HyperTape v.0.1.2
 
-![Image](https://github.com/user-attachments/assets/fc868946-8bf1-4f4b-b60b-3feb1b6ec732)
+![Image](https://github.com/user-attachments/assets/019d981b-a4a9-49dd-9554-edec5160fe96)
 
 ## Release Notes:
 

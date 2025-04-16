@@ -38,6 +38,16 @@ private:
     juce::Slider driveSlider;
     juce::Slider biasSlider;
     juce::Slider amountSlider;
+    
+    // Defines the bounds for the color selection LED's
+    juce::Rectangle<int> colorALEDL {15, 128, 4, 4};
+    juce::Rectangle<int> colorALEDR {98, 128, 4, 4};
+    
+    juce::Rectangle<int> colorBLEDL {15, 178, 4, 4};
+    juce::Rectangle<int> colorBLEDR {98, 178, 4, 4};
+    
+    juce::Rectangle<int> colorCLEDL {15, 228, 4, 4};
+    juce::Rectangle<int> colorCLEDR {98, 228, 4, 4};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HyperTapeAudioProcessorEditor)
 };
