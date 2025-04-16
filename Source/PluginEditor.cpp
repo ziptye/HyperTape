@@ -73,6 +73,12 @@ void HyperTapeAudioProcessorEditor::paint (juce::Graphics& g)
     
     g.setColour(juce::Colours::red);
     g.fillEllipse(colorCLEDR.toFloat());
+    
+    g.setColour(juce::Colours::red);
+    g.fillEllipse(speed7_5.toFloat());
+    
+    g.setColour(juce::Colours::red);
+    g.fillEllipse(speed15.toFloat());
 }
 
 void HyperTapeAudioProcessorEditor::resized()
