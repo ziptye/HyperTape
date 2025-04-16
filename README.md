@@ -1,14 +1,29 @@
-# HyperTape v.0.1.1
+# HyperTape v.0.1.2
 
 ![Image](https://github.com/user-attachments/assets/fc868946-8bf1-4f4b-b60b-3feb1b6ec732)
 
 ## Release Notes:
 
+### v0.1.2
+
+- Updates UI to the latest version (v.0.1.2)
+- Adds custom knob sliders using a custom LookAndFeel class
+- Adds LED lights to color + speed params
+
 ### v0.1.1
 
 - Updates UI to the latest version (v.0.1.1)
-- Adds APVTS and parameter layout (funtionality to follow shortly)
+- Adds APVTS and parameter layout (functionality to follow shortly)
 
 ### v.0.1.0
 
 - Initial commit
+
+## Future Tasks:
+
+- [ ] Connect various knob parameters to APVTS
+- [ ] Add functionality to the "color" selection section
+- [ ] Design LPF & HPF knobs
+- [ ] Design & implement the low and high-pass filters
+- [ ] Add DSP code
+
