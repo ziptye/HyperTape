@@ -158,6 +158,10 @@ void HyperTapeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
         // ..do something to the data...
     }
     
+    auto totalDrive = apvts.getRawParameterValue("Drive") -> load();
+    auto totalBias = apvts.getRawParameterValue("Bias") -> load();
+    auto totalAmount = apvts.getRawParameterValue("Amount") -> load();
+    
 #if JUCE_DEBUG
     protectYourEars(buffer);
 #endif

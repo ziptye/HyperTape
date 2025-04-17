@@ -51,6 +51,10 @@ private:
     
     juce::Rectangle<int> speed7_5 {123, 407, 3, 3}; // Default ON
     juce::Rectangle<int> speed15 {183, 407, 3, 3};
+    
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> driveAttachment;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> biasAttachment;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> amountAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HyperTapeAudioProcessorEditor)
 };

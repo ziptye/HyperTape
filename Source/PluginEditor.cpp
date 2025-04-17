@@ -14,6 +14,15 @@
 HyperTapeAudioProcessorEditor::HyperTapeAudioProcessorEditor (HyperTapeAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
+    driveAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.apvts, "Drive", driveSlider);
+
+    biasAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.apvts, "Bias", biasSlider);
+
+    amountAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.apvts, "Amount", amountSlider);
+
     setSize (753, 450);
     background = juce::ImageCache::getFromMemory(BinaryData::HYPERTAPE11_png, BinaryData::HYPERTAPE11_pngSize);
     
@@ -22,24 +31,17 @@ HyperTapeAudioProcessorEditor::HyperTapeAudioProcessorEditor (HyperTapeAudioProc
         addAndMakeVisible(comps); // Renders all components
     }
     
-    // TODO: REPLACE WITH APVTS PARAMS
     driveSlider.setLookAndFeel(&myLookAndFeelV1);
     driveSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
     driveSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 60, 20);
-    driveSlider.setRange(0.f, 1.f, 0.0001);
-    driveSlider.setValue(0.0);
     
     biasSlider.setLookAndFeel(&myLookAndFeelV1);
     biasSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
     biasSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 60, 20);
-    biasSlider.setRange(0.f, 1.f, 0.0001);
-    biasSlider.setValue(0.0);
     
     amountSlider.setLookAndFeel(&myLookAndFeelV1);
     amountSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
     amountSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 60, 20);
-    amountSlider.setRange(0.f, 1.f, 0.0001);
-    amountSlider.setValue(0.0);
 }
 
 HyperTapeAudioProcessorEditor::~HyperTapeAudioProcessorEditor()
