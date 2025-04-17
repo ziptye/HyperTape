@@ -54,8 +54,16 @@ void HyperTapeAudioProcessorEditor::paint (juce::Graphics& g)
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
 
-    g.drawImageAt(background, 0, 0);\
+    g.drawImageAt(background, 0, 0);
     
+//    g.setColour(juce::Colours::blue);
+//    g.fillEllipse(colorA.toFloat());
+//    
+//    g.setColour(juce::Colours::blue);
+//    g.fillEllipse(colorB.toFloat());
+//    
+//    g.setColour(juce::Colours::blue);
+//    g.fillEllipse(colorC.toFloat());
     
     // TODO: REFACTOR THIS CODE TO DRAW THE LEDS FOR THE COLOR SELECTION SECTION
     g.setColour(juce::Colours::red);
