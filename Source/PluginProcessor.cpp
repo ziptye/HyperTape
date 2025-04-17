@@ -157,6 +157,10 @@ void HyperTapeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
 
         // ..do something to the data...
     }
+    
+#if JUCE_DEBUG
+    protectYourEars(buffer);
+#endif
 }
 
 //==============================================================================
