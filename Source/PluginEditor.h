@@ -40,6 +40,8 @@ private:
     juce::Slider driveSlider;
     juce::Slider biasSlider;
     juce::Slider amountSlider;
+    juce::Slider lowPassSlider;
+    juce::Slider highPassSlider;
     
     // Defines bounds of Color Selectors
     juce::Rectangle<int> colorA {39, 110, 40, 40};
@@ -62,6 +64,8 @@ private:
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> driveAttachment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> biasAttachment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> amountAttachment;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> lpfAttachment;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> hpfAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HyperTapeAudioProcessorEditor)
 };

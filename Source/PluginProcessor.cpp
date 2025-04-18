@@ -179,6 +179,9 @@ void HyperTapeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
     auto lpfAmount = apvts.getRawParameterValue("Low-Pass") -> load();
     auto hpfAmount = apvts.getRawParameterValue("High-Pass") -> load();
     
+    tapeLPF.setCutoffFrequency(lpfAmount);
+    tapeHPF.setCutoffFrequency(hpfAmount);
+    
 #if JUCE_DEBUG
     protectYourEars(buffer);
 #endif
