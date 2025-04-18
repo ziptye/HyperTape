@@ -21,7 +21,7 @@
 
 ## Future Tasks:
 
-- [ ] Connect various knob parameters to APVTS
+- [x] Connect various knob parameters to APVTS
 - [ ] Add functionality to the "color" selection section
 - [ ] Design LPF & HPF knobs
 - [ ] Design & implement the low and high-pass filters

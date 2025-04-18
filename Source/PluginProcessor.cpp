@@ -98,8 +98,19 @@ void HyperTapeAudioProcessor::changeProgramName (int index, const juce::String& 
 //==============================================================================
 void HyperTapeAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    juce::dsp::ProcessSpec spec;
+    spec.maximumBlockSize = samplesPerBlock;
+    spec.numChannels = getTotalNumOutputChannels();
+    spec.sampleRate = sampleRate;
+    
+    tapeHPF.reset();
+    tapeLPF.reset();
+    
+    tapeHPF.prepare(spec);
+    tapeLPF.prepare(spec);
+    
+    tapeHPF.setType(juce::dsp::StateVariableTPTFilterType::highpass);
+    tapeLPF.setType(juce::dsp::StateVariableTPTFilterType::lowpass);
 }
 
 void HyperTapeAudioProcessor::releaseResources()
@@ -165,6 +176,8 @@ void HyperTapeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
     auto totalDrive = apvts.getRawParameterValue("Drive") -> load();
     auto totalBias = apvts.getRawParameterValue("Bias") -> load();
     auto totalAmount = apvts.getRawParameterValue("Amount") -> load();
+    auto lpfAmount = apvts.getRawParameterValue("Low-Pass") -> load();
+    auto hpfAmount = apvts.getRawParameterValue("High-Pass") -> load();
     
 #if JUCE_DEBUG
     protectYourEars(buffer);
