@@ -22,6 +22,10 @@ HyperTapeAudioProcessorEditor::HyperTapeAudioProcessorEditor (HyperTapeAudioProc
 
     amountAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
         audioProcessor.apvts, "Amount", amountSlider);
+    
+    lpfAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "Low-Pass", lowPassSlider);
+    
+    hpfAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "High-Pass", highPassSlider);
 
     setSize (753, 450);
     background = juce::ImageCache::getFromMemory(BinaryData::HYPERTAPE11_png, BinaryData::HYPERTAPE11_pngSize);
@@ -42,6 +46,15 @@ HyperTapeAudioProcessorEditor::HyperTapeAudioProcessorEditor (HyperTapeAudioProc
     amountSlider.setLookAndFeel(&myLookAndFeelV1);
     amountSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
     amountSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 60, 20);
+    
+    lowPassSlider.setLookAndFeel(&myLookAndFeelV1);
+    lowPassSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    lowPassSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 60, 20);
+    
+    highPassSlider.setLookAndFeel(&myLookAndFeelV1);
+    highPassSlider.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    highPassSlider.setTextBoxStyle(juce::Slider::NoTextBox, false, 60, 20);
+    
 }
 
 HyperTapeAudioProcessorEditor::~HyperTapeAudioProcessorEditor()
@@ -86,6 +99,8 @@ void HyperTapeAudioProcessorEditor::resized()
     driveSlider.setBounds(342, 390, 65, 65);
     biasSlider.setBounds(572, 390, 65, 65);
     amountSlider.setBounds(28, 313, 65, 65);
+    lowPassSlider.setBounds(661, 158, 65, 65);
+    highPassSlider.setBounds(661, 272, 65, 65);
 }
 
 std::vector<juce::Component*>HyperTapeAudioProcessorEditor::getComps()
@@ -94,7 +109,9 @@ std::vector<juce::Component*>HyperTapeAudioProcessorEditor::getComps()
     {
         &driveSlider,
         &biasSlider,
-        &amountSlider
+        &amountSlider,
+        &lowPassSlider,
+        &highPassSlider,
     };
 }
 

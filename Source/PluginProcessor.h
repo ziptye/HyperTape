@@ -60,6 +60,8 @@ public:
     std::atomic<float>* colorAState = nullptr;
     std::atomic<float>* colorBState = nullptr;
     std::atomic<float>* colorCState = nullptr;
+    
+    juce::dsp::StateVariableTPTFilter<float> tapeLPF, tapeHPF;
 
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();

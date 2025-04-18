@@ -1,6 +1,6 @@
 # HyperTape v.0.1.2
 
-![Image](https://github.com/user-attachments/assets/019d981b-a4a9-49dd-9554-edec5160fe96)
+![Image](https://github.com/user-attachments/assets/5c69e1e1-8cd9-41cb-88c8-84408cdfac72)
 
 ## Release Notes:
 
@@ -21,7 +21,7 @@
 
 ## Future Tasks:
 
-- [ ] Connect various knob parameters to APVTS
+- [x] Connect various knob parameters to APVTS
 - [ ] Add functionality to the "color" selection section
 - [ ] Design LPF & HPF knobs
 - [ ] Design & implement the low and high-pass filters
