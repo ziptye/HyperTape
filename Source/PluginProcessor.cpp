@@ -23,6 +23,10 @@ HyperTapeAudioProcessor::HyperTapeAudioProcessor()
                        ), apvts(*this, nullptr, "HyperTape Params", createParameterLayout())
 #endif
 {
+    colorAState = apvts.getRawParameterValue("Color A");
+    colorBState = apvts.getRawParameterValue("Color B");
+    colorCState = apvts.getRawParameterValue("Color C");
+    
 }
 
 HyperTapeAudioProcessor::~HyperTapeAudioProcessor()
@@ -208,7 +212,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout HyperTapeAudioProcessor::cre
     params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("Low-Pass" , 1), "Low-Pass", LPFRange, 20000.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("High-Pass" , 1), "High-Pass", HPFRange, 20.0f));
     
-    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color A", 1), "Color A", true)); // Default
+    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color A", 1), "Color A", false)); // Default
     params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color B", 1), "Color B", false));
     params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color C", 1), "Color C", false));
     

@@ -56,32 +56,23 @@ void HyperTapeAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.drawImageAt(background, 0, 0);
     
-//    g.setColour(juce::Colours::blue);
-//    g.fillEllipse(colorA.toFloat());
-//    
-//    g.setColour(juce::Colours::blue);
-//    g.fillEllipse(colorB.toFloat());
-//    
-//    g.setColour(juce::Colours::blue);
-//    g.fillEllipse(colorC.toFloat());
-    
     // TODO: REFACTOR THIS CODE TO DRAW THE LEDS FOR THE COLOR SELECTION SECTION
-    g.setColour(juce::Colours::red);
+    g.setColour(audioProcessor.colorAState-> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(colorALEDL.toFloat());
     
-    g.setColour(juce::Colours::red);
+    g.setColour(audioProcessor.colorAState-> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(colorALEDR.toFloat());
     
-    g.setColour(juce::Colours::red);
+    g.setColour(audioProcessor.colorBState-> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(colorBLEDL.toFloat());
     
-    g.setColour(juce::Colours::red);
+    g.setColour(audioProcessor.colorBState-> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(colorBLEDR.toFloat());
     
-    g.setColour(juce::Colours::red);
+    g.setColour(audioProcessor.colorCState-> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(colorCLEDL.toFloat());
     
-    g.setColour(juce::Colours::red);
+    g.setColour(audioProcessor.colorCState-> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(colorCLEDR.toFloat());
     
     g.setColour(juce::Colours::red);
@@ -106,4 +97,28 @@ std::vector<juce::Component*>HyperTapeAudioProcessorEditor::getComps()
         &biasSlider,
         &amountSlider
     };
+}
+
+void HyperTapeAudioProcessorEditor::mouseDown(const juce::MouseEvent &event)
+{
+    juce::Point<int> clickPos = event.getPosition();
+    
+    if (colorA.contains(clickPos))
+    {
+        bool currentState = audioProcessor.colorAState -> load() > 0.5f;
+        audioProcessor.apvts.getParameter("Color A")-> setValueNotifyingHost(currentState ? 0.0f : 1.0f);
+        repaint();
+    }
+    else if (colorB.contains(clickPos))
+    {
+        bool currentState = audioProcessor.colorBState -> load() > 0.5f;
+        audioProcessor.apvts.getParameter("Color B")-> setValueNotifyingHost(currentState ? 0.0f : 1.0f);
+        repaint();
+    }
+    else if (colorC.contains(clickPos))
+    {
+        bool currentState = audioProcessor.colorCState -> load() > 0.5f;
+        audioProcessor.apvts.getParameter("Color C")-> setValueNotifyingHost(currentState ? 0.0f : 1.0f);
+        repaint();
+    }
 }
