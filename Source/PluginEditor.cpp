@@ -56,7 +56,6 @@ void HyperTapeAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.drawImageAt(background, 0, 0);
     
-    // TODO: REFACTOR THIS CODE TO DRAW THE LEDS FOR THE COLOR SELECTION SECTION
     g.setColour(audioProcessor.colorAState-> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(colorALEDL.toFloat());
     
@@ -102,6 +101,8 @@ std::vector<juce::Component*>HyperTapeAudioProcessorEditor::getComps()
 void HyperTapeAudioProcessorEditor::mouseDown(const juce::MouseEvent &event)
 {
     juce::Point<int> clickPos = event.getPosition();
+    
+    // TODO: Need to make these mutually exclusive + add speed selection
     
     if (colorA.contains(clickPos))
     {
