@@ -56,6 +56,10 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     
     juce::AudioProcessorValueTreeState apvts;
+    
+    std::atomic<float>* colorAState = nullptr;
+    std::atomic<float>* colorBState = nullptr;
+    std::atomic<float>* colorCState = nullptr;
 
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
