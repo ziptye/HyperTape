@@ -48,6 +48,10 @@ private:
     juce::Rectangle<int> colorB {39, 160, 40, 40};
     juce::Rectangle<int> colorC {39, 210, 40, 40};
     
+    // Defines bounds of the Speed selectors
+    juce::Rectangle<int> speed7_5Bounds {105, 401, 40, 40};
+    juce::Rectangle<int> speed15Bounds {165, 401, 40, 40};
+    
     // Defines the bounds for the color + speed selection LED's
     juce::Rectangle<int> colorALEDL {15, 128, 4, 4}; // Default ON
     juce::Rectangle<int> colorALEDR {98, 128, 4, 4};

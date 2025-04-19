@@ -87,10 +87,10 @@ void HyperTapeAudioProcessorEditor::paint (juce::Graphics& g)
     g.setColour(audioProcessor.colorCState-> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(colorCLEDR.toFloat());
     
-    g.setColour(juce::Colours::red);
+    g.setColour(audioProcessor.speed7_5State -> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(speed7_5.toFloat());
     
-    g.setColour(juce::Colours::red);
+    g.setColour(audioProcessor.speed15State -> load() > 0.5f ? juce::Colours::red : juce::Colours::transparentWhite);
     g.fillEllipse(speed15.toFloat());
 }
 
@@ -137,6 +137,19 @@ void HyperTapeAudioProcessorEditor::mouseDown(const juce::MouseEvent &event)
     {
         bool currentState = audioProcessor.colorCState -> load() > 0.5f;
         audioProcessor.apvts.getParameter("Color C")-> setValueNotifyingHost(currentState ? 0.0f : 1.0f);
+        repaint();
+    }
+    
+    if (speed7_5Bounds.contains(clickPos))
+    {
+        bool currentState = audioProcessor.speed7_5State -> load();
+        audioProcessor.apvts.getParameter("Speed 7.5")-> setValueNotifyingHost(currentState ? 0.0f : 1.0f);
+        repaint();
+    }
+    else if (speed15Bounds.contains(clickPos))
+    {
+        bool currentState = audioProcessor.speed15State -> load();
+        audioProcessor.apvts.getParameter("Speed 15")-> setValueNotifyingHost(currentState ? 0.0f : 1.0f);
         repaint();
     }
 }

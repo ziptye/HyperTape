@@ -24,6 +24,7 @@
 - [x] Connect various knob parameters to APVTS
 - [ ] Add functionality to the "color" selection section
 - [ ] Design LPF & HPF knobs
-- [ ] Design & implement the low and high-pass filters
+- [x] Design & implement the low and high-pass filters
 - [ ] Add DSP code
+- [ ] Fix Knob outline as it over laps notches
 
