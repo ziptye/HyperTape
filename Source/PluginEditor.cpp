@@ -28,7 +28,7 @@ HyperTapeAudioProcessorEditor::HyperTapeAudioProcessorEditor (HyperTapeAudioProc
     hpfAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "High-Pass", highPassSlider);
 
     setSize (753, 450);
-    background = juce::ImageCache::getFromMemory(BinaryData::HYPERTAPE11_png, BinaryData::HYPERTAPE11_pngSize);
+    background = juce::ImageCache::getFromMemory(BinaryData::HYPERTAPE12_png, BinaryData::HYPERTAPE12_pngSize);
     
     for (auto* comps : getComps())
     {
