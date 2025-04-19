@@ -53,7 +53,7 @@ private:
     juce::Rectangle<int> speed15Bounds {165, 401, 40, 40};
     
     // Defines the bounds for the color + speed selection LED's
-    juce::Rectangle<int> colorALEDL {15, 128, 4, 4}; // Default ON
+    juce::Rectangle<int> colorALEDL {15, 128, 4, 4};
     juce::Rectangle<int> colorALEDR {98, 128, 4, 4};
     
     juce::Rectangle<int> colorBLEDL {15, 178, 4, 4};
@@ -62,7 +62,7 @@ private:
     juce::Rectangle<int> colorCLEDL {15, 228, 4, 4};
     juce::Rectangle<int> colorCLEDR {98, 228, 4, 4};
     
-    juce::Rectangle<int> speed7_5 {123, 407, 3, 3}; // Default ON
+    juce::Rectangle<int> speed7_5 {123, 407, 3, 3};
     juce::Rectangle<int> speed15 {183, 407, 3, 3};
     
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> driveAttachment;

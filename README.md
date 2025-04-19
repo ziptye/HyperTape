@@ -1,8 +1,15 @@
-# HyperTape v.0.1.2
+# HyperTape v.0.1.3
 
-![Image](https://github.com/user-attachments/assets/5c69e1e1-8cd9-41cb-88c8-84408cdfac72)
+![Image](https://github.com/user-attachments/assets/0a64b2e5-51b4-4f05-8b89-83ece8c82a2f)
 
 ## Release Notes:
+
+### v.0.1.3
+
+- Updates UI to the latest version (v0.1.3)
+- Adds knobs to all parameters
+- Conencts knobs to APVTS
+- Low-Pass & High-Pass filters implemented
 
 ### v0.1.2
 
