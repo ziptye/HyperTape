@@ -61,6 +61,9 @@ public:
     std::atomic<float>* colorBState = nullptr;
     std::atomic<float>* colorCState = nullptr;
     
+    std::atomic<float>* speed7_5State = nullptr;
+    std::atomic<float>* speed15State = nullptr;
+    
     juce::dsp::StateVariableTPTFilter<float> tapeLPF, tapeHPF;
 
 private:

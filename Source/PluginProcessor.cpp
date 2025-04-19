@@ -27,6 +27,9 @@ HyperTapeAudioProcessor::HyperTapeAudioProcessor()
     colorBState = apvts.getRawParameterValue("Color B");
     colorCState = apvts.getRawParameterValue("Color C");
     
+    speed7_5State = apvts.getRawParameterValue("Speed 7.5");
+    speed15State = apvts.getRawParameterValue("Speed 15");
+    
 }
 
 HyperTapeAudioProcessor::~HyperTapeAudioProcessor()
@@ -178,6 +181,8 @@ void HyperTapeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
     auto totalAmount = apvts.getRawParameterValue("Amount") -> load();
     auto lpfAmount = apvts.getRawParameterValue("Low-Pass") -> load();
     auto hpfAmount = apvts.getRawParameterValue("High-Pass") -> load();
+    auto speed7_5Amount = apvts.getRawParameterValue("Speed 7.5") -> load();
+    auto speed15Amount = apvts.getRawParameterValue("Speed 15") -> load();
     
     tapeLPF.setCutoffFrequency(lpfAmount);
     tapeHPF.setCutoffFrequency(hpfAmount);
@@ -228,7 +233,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout HyperTapeAudioProcessor::cre
     params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("Low-Pass" , 1), "Low-Pass", LPFRange, 20000.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("High-Pass" , 1), "High-Pass", HPFRange, 20.0f));
     
-    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color A", 1), "Color A", false)); // Default
+    params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color A", 1), "Color A", false));
     params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color B", 1), "Color B", false));
     params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID("Color C", 1), "Color C", false));
     
